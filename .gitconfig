@@ -1,0 +1,8 @@
+[user]
+	name = nojuza
+	email = noahc007@gmail.com
+[core]
+	pager = less -FRX
+	editor = vim
+[credential]
+	helper = store

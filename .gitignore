@@ -1,0 +1,3 @@
+# Ignore everything by default.
+# Only files explicitly added with 'dotfiles add -f' are tracked.
+*
