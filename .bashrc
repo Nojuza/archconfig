@@ -27,7 +27,7 @@ else
     echo "Start Hyprland with command Hyprland"
 fi
 
-alias ml4w-hyprland='~/.config/ml4w/apps/ML4W_Hyprland_Settings-x86_64.AppImage'
+# alias ml4w-hyprland removed — ml4w no longer in use
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
