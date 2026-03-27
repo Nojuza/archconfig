@@ -1,0 +1,56 @@
+/* ============================================================
+ *  Cyberpunk Firefox — userContent.css
+ *  Styles internal Firefox pages to match the Cyberpunk theme.
+ * ============================================================ */
+
+/* ---- BLANK / NEW TAB ---- */
+
+@-moz-document url("about:blank"), url("about:newtab"), url("about:home") {
+  body, html, #root {
+    background-color: #120B10 !important;
+    color: #EEFFFF !important;
+  }
+
+  /* Hide new tab page content (shortcuts, pocket, etc.) */
+  .outer-wrapper,
+  .search-wrapper,
+  main {
+    display: none !important;
+  }
+}
+
+/* ---- ABOUT PAGES (preferences, addons, etc.) ---- */
+
+/* about:addons left unstyled — custom CSS variables break the search UI.
+   Firefox's built-in dark theme handles these pages well enough. */
+@-moz-document url-prefix("about:preferences"),
+               url-prefix("about:config") {
+  :root {
+    --in-content-page-background: #120B10 !important;
+    --in-content-page-color: #EEFFFF !important;
+    --in-content-box-background: #140007 !important;
+    --in-content-primary-button-background: #FF0055 !important;
+    --in-content-primary-button-background-hover: #FF4081 !important;
+    --in-content-focus-outline-color: #FF0055 !important;
+    --in-content-accent-color: #FF0055 !important;
+    --link-color: #00FFC8 !important;
+  }
+}
+
+/* ---- PRIVATE BROWSING PAGE ---- */
+
+@-moz-document url("about:privatebrowsing") {
+  body, html {
+    background-color: #120B10 !important;
+    color: #EEFFFF !important;
+  }
+}
+
+/* ---- SCROLLBAR STYLING FOR WEB CONTENT ---- */
+
+@-moz-document regexp("https?://.*") {
+  * {
+    scrollbar-color: #FF0055 #120B10 !important;
+    scrollbar-width: thin !important;
+  }
+}

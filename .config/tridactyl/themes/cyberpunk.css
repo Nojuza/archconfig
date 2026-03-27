@@ -1,0 +1,135 @@
+/* ============================================================
+ *  Cyberpunk Tridactyl Theme
+ *  Matches Kitty Cyberpunk color scheme.
+ * ============================================================ */
+
+:root {
+  --tridactyl-bg: #120B10;
+  --tridactyl-bg-dark: #140007;
+  --tridactyl-fg: #EEFFFF;
+  --tridactyl-accent: #FF0055;
+  --tridactyl-accent-light: #FF4081;
+  --tridactyl-cyan: #00FFC8;
+  --tridactyl-yellow: #FFFC58;
+  --tridactyl-green: #00FF9C;
+  --tridactyl-blue: #76C1FF;
+  --tridactyl-magenta: #D57BFF;
+  --tridactyl-selection: #563466;
+  --tridactyl-grey: #777777;
+}
+
+/* ---- Command line ---- */
+
+#tridactyl-cmdline {
+  background-color: var(--tridactyl-bg) !important;
+  font-family: "Fira Code", monospace !important;
+  font-size: 13px !important;
+  padding: 4px 8px !important;
+  border-top: 2px solid var(--tridactyl-accent) !important;
+}
+
+#tridactyl-cmdline input,
+#tridactyl-cmdline #tridactyl-input {
+  color: var(--tridactyl-fg) !important;
+  background-color: var(--tridactyl-bg) !important;
+  caret-color: var(--tridactyl-cyan) !important;
+  font-family: "Fira Code", monospace !important;
+  font-size: 13px !important;
+}
+
+/* Command line prefix (the : character) */
+#tridactyl-cmdline .prompt {
+  color: var(--tridactyl-accent) !important;
+}
+
+/* ---- Completions dropdown ---- */
+
+#completions {
+  background-color: var(--tridactyl-bg) !important;
+  color: var(--tridactyl-fg) !important;
+  font-family: "Fira Code", monospace !important;
+  font-size: 12px !important;
+  border-top: 1px solid var(--tridactyl-accent) !important;
+}
+
+#completions .sectionHeader {
+  background-color: var(--tridactyl-bg-dark) !important;
+  color: var(--tridactyl-accent) !important;
+  font-weight: bold !important;
+  padding: 4px 8px !important;
+  border-bottom: 1px solid var(--tridactyl-accent) !important;
+}
+
+#completions .focused {
+  background-color: var(--tridactyl-selection) !important;
+  color: var(--tridactyl-fg) !important;
+}
+
+#completions .option .url {
+  color: var(--tridactyl-cyan) !important;
+}
+
+#completions .option .title {
+  color: var(--tridactyl-fg) !important;
+}
+
+/* ---- Hint mode ---- */
+
+:root {
+  --tridactyl-hintspan-font-family: "Fira Code", monospace;
+  --tridactyl-hintspan-font-size: 12px;
+  --tridactyl-hintspan-font-weight: bold;
+  --tridactyl-hintspan-fg: var(--tridactyl-bg-dark);
+  --tridactyl-hintspan-bg: var(--tridactyl-accent);
+  --tridactyl-hintspan-border-color: var(--tridactyl-bg);
+  --tridactyl-hintspan-border-width: 1px;
+  --tridactyl-hintspan-border-style: solid;
+  --tridactyl-hint-active-fg: var(--tridactyl-bg-dark);
+  --tridactyl-hint-active-bg: var(--tridactyl-cyan);
+  --tridactyl-hint-active-outline: 1px solid var(--tridactyl-cyan);
+  --tridactyl-hint-bg: none;
+}
+
+/* ---- Status bar / mode indicator ---- */
+
+#tridactyl-mode-indicator {
+  background-color: var(--tridactyl-accent) !important;
+  color: var(--tridactyl-bg-dark) !important;
+  font-family: "Fira Code", monospace !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  padding: 2px 8px !important;
+  text-transform: uppercase !important;
+}
+
+/* Insert mode — cyan indicator */
+#tridactyl-mode-indicator.TridactylModeInsert {
+  background-color: var(--tridactyl-cyan) !important;
+  color: var(--tridactyl-bg-dark) !important;
+}
+
+/* Ignore mode — yellow indicator */
+#tridactyl-mode-indicator.TridactylModeIgnore {
+  background-color: var(--tridactyl-yellow) !important;
+  color: var(--tridactyl-bg-dark) !important;
+}
+
+/* Visual mode — magenta indicator */
+#tridactyl-mode-indicator.TridactylModeVisual {
+  background-color: var(--tridactyl-magenta) !important;
+  color: var(--tridactyl-bg-dark) !important;
+}
+
+/* ---- Error / warning messages ---- */
+
+#tridactyl-cmdline .error {
+  color: var(--tridactyl-accent-light) !important;
+}
+
+#tridactyl-cmdline .warning {
+  color: var(--tridactyl-yellow) !important;
+}
+
+#tridactyl-cmdline .info {
+  color: var(--tridactyl-cyan) !important;
+}

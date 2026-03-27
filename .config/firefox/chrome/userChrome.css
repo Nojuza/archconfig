@@ -1,0 +1,229 @@
+/* ============================================================
+ *  Cyberpunk Minimal Firefox — userChrome.css
+ *  Strips Firefox down to qutebrowser-like minimal UI.
+ *  Toggle tab bar with Tridactyl: tH
+ *  Toggle nav bar with Tridactyl: sH
+ * ============================================================ */
+
+:root {
+  --cyberpunk-bg: #120B10;
+  --cyberpunk-bg-dark: #140007;
+  --cyberpunk-accent: #FF0055;
+  --cyberpunk-cyan: #00FFC8;
+  --cyberpunk-yellow: #FFFC58;
+  --cyberpunk-green: #00FF9C;
+  --cyberpunk-blue: #76C1FF;
+  --cyberpunk-magenta: #D57BFF;
+  --cyberpunk-white: #EEFFFF;
+  --cyberpunk-grey: #777777;
+  --cyberpunk-selection: #563466;
+}
+
+/* ---- GLOBAL DARK BACKGROUND ---- */
+
+#navigator-toolbox,
+#titlebar,
+#TabsToolbar,
+#nav-bar,
+#PersonalToolbar,
+#sidebar-header {
+  background-color: var(--cyberpunk-bg) !important;
+  border-color: var(--cyberpunk-bg-dark) !important;
+}
+
+/* ---- TAB BAR: visible, horizontal, top ---- */
+/* Toggle with Tridactyl: tH */
+
+#TabsToolbar {
+  background-color: var(--cyberpunk-bg) !important;
+}
+
+/* ---- TAB STYLING (when visible) ---- */
+
+.tab-background {
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 2px !important;
+}
+
+.tabbrowser-tab {
+  min-height: 28px !important;
+  max-height: 28px !important;
+}
+
+.tabbrowser-tab .tab-label {
+  color: var(--cyberpunk-white) !important;
+  font-family: monospace !important;
+  font-size: 11px !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-background {
+  background-color: var(--cyberpunk-accent) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: var(--cyberpunk-bg-dark) !important;
+}
+
+/* No tab line indicator */
+.tab-line {
+  display: none !important;
+}
+
+/* Tab close button — only show on hover */
+.tab-close-button {
+  display: none !important;
+}
+.tabbrowser-tab:hover .tab-close-button {
+  display: block !important;
+  color: var(--cyberpunk-accent) !important;
+}
+
+/* New tab button */
+#tabs-newtab-button,
+#new-tab-button {
+  fill: var(--cyberpunk-accent) !important;
+  opacity: 0.6;
+}
+#tabs-newtab-button:hover,
+#new-tab-button:hover {
+  opacity: 1;
+}
+
+/* ---- NAV BAR ---- */
+/* Kept visible by default so extension installs, permission prompts,
+   and download popups work. Use Tridactyl sH to toggle it off once
+   you've finished setting up extensions. */
+
+#nav-bar {
+  background-color: var(--cyberpunk-bg) !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+
+/* ---- URL BAR STYLING ---- */
+
+#urlbar {
+  background-color: var(--cyberpunk-bg-dark) !important;
+  color: var(--cyberpunk-white) !important;
+  border: 1px solid var(--cyberpunk-accent) !important;
+  border-radius: 2px !important;
+  font-family: monospace !important;
+  font-size: 12px !important;
+}
+
+#urlbar-input {
+  color: var(--cyberpunk-white) !important;
+  font-family: monospace !important;
+}
+
+/* URL bar results dropdown */
+.urlbarView {
+  background-color: var(--cyberpunk-bg) !important;
+  color: var(--cyberpunk-white) !important;
+  font-family: monospace !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: var(--cyberpunk-selection) !important;
+}
+
+.urlbarView-url {
+  color: var(--cyberpunk-cyan) !important;
+}
+
+.urlbarView-title {
+  color: var(--cyberpunk-white) !important;
+}
+
+/* ---- HIDE BOOKMARKS BAR ---- */
+
+#PersonalToolbar {
+  visibility: collapse !important;
+}
+
+/* ---- HIDE TITLE BAR BUTTONS ---- */
+
+#titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* ---- SIDEBAR STYLING ---- */
+
+#sidebar-header {
+  color: var(--cyberpunk-accent) !important;
+  font-family: monospace !important;
+}
+
+#sidebar-box {
+  background-color: var(--cyberpunk-bg) !important;
+}
+
+/* ---- FINDBAR (Ctrl+F) ---- */
+
+findbar {
+  background-color: var(--cyberpunk-bg) !important;
+  color: var(--cyberpunk-white) !important;
+  border-top: 1px solid var(--cyberpunk-accent) !important;
+}
+
+findbar .findbar-textbox {
+  background-color: var(--cyberpunk-bg-dark) !important;
+  color: var(--cyberpunk-white) !important;
+  border: 1px solid var(--cyberpunk-accent) !important;
+  font-family: monospace !important;
+}
+
+/* ---- REMOVE VISUAL CLUTTER ---- */
+
+/* Remove all-tabs button */
+#alltabs-button {
+  display: none !important;
+}
+
+/* Remove Firefox View button */
+#firefox-viewbutton {
+  display: none !important;
+}
+
+/* Remove tracking protection icon */
+#tracking-protection-icon-container {
+  display: none !important;
+}
+
+/* Remove page action buttons in URL bar */
+#page-action-buttons {
+  display: none !important;
+}
+
+/* Remove identity box (lock icon) — minimal look */
+#identity-icon-box {
+  display: none !important;
+}
+
+/* Compact notification bar */
+notification {
+  background-color: var(--cyberpunk-bg) !important;
+  color: var(--cyberpunk-white) !important;
+  border-bottom: 1px solid var(--cyberpunk-accent) !important;
+}
+
+/* ---- CONTEXT MENUS ---- */
+
+menupopup {
+  --panel-background: var(--cyberpunk-bg) !important;
+  --panel-color: var(--cyberpunk-white) !important;
+}
+
+menuitem:hover,
+menu:hover {
+  background-color: var(--cyberpunk-selection) !important;
+}
+
+/* ---- SCROLLBAR ---- */
+
+* {
+  scrollbar-color: var(--cyberpunk-accent) var(--cyberpunk-bg) !important;
+  scrollbar-width: thin !important;
+}

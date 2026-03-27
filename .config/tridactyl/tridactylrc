@@ -1,0 +1,83 @@
+" ============================================================
+"  Cyberpunk Tridactyl Config — tridactylrc
+"  Replicates qutebrowser keybinds and behavior in Firefox.
+"  Reload with: :source
+" ============================================================
+
+" --- Theme ---
+colorscheme cyberpunk
+
+" --- General settings ---
+set smoothscroll true
+set hintchars asdfghjkl
+set editorcmd kitty -e vim %f
+set newtab about:blank
+
+" --- Search engines (matching qutebrowser) ---
+set searchurls.DEFAULT https://duckduckgo.com/?q=%s
+set searchurls.aw https://wiki.archlinux.org/?search=%s
+set searchurls.apkg https://archlinux.org/packages/?sort=&q=%s&maintainer=&flagged=
+set searchurls.gh https://github.com/search?o=desc&q=%s&s=stars
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+
+" --- Keybinds: Navigation (qutebrowser parity) ---
+
+" = to open URL/search (like qutebrowser)
+bind = fillcmdline open
+
+" h for history
+bind h fillcmdline open -b history
+
+" T to hint links in new tab
+bind T hint -t
+
+" Open clipboard URL in current tab / new tab
+bind pp clipboard open
+bind pt clipboard tabopen
+
+" Tab movement
+bind gJ tabmove +1
+bind gK tabmove -1
+
+" --- Keybinds: UI Toggles ---
+
+" tH — toggle tab bar visibility
+bind tH guiset_quiet tabs toggle
+
+" sH — toggle navigation bar
+bind sH guiset_quiet navbar toggle
+
+" --- Keybinds: Extras ---
+
+" d to close tab (qutebrowser default)
+bind d tabclose
+
+" u to undo close tab
+bind u undo
+
+" Shift+H / Shift+L for back/forward
+bind H back
+bind L forward
+
+" J / K to switch tabs
+bind J tabprev
+bind K tabnext
+
+" gi to focus first input field
+bind gi focusinput -l
+
+" yy to yank current URL
+bind yy clipboard yank
+
+" --- Disable Tridactyl on certain sites ---
+" (sites where you want normal key behavior)
+autocmd DocStart mail.google.com mode ignore
+autocmd DocStart docs.google.com mode ignore
+autocmd DocStart sheets.google.com mode ignore
+autocmd DocStart discord.com mode ignore
+
+" --- Privacy ---
+" Block canvas fingerprinting notification
+set csp csp
+
+" --- Hint mode styling is in themes/cyberpunk.css ---

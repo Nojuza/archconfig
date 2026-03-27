@@ -68,6 +68,32 @@ yay -S --needed --noconfirm --combinedupgrade "${PACKAGES[@]}"
 
 ok "All packages installed"
 
+# --- Deploy Firefox profile config ---
+# Firefox stores profiles in random-named dirs, so we find the active one
+# and copy our chrome/ and user.js into it.
+
+info "Deploying Firefox Cyberpunk theme..."
+FF_CONFIG="$HOME/.config/firefox"
+if [[ -d "$FF_CONFIG/chrome" ]]; then
+    # Find the default-release profile (or first profile dir)
+    FF_PROFILE=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.default-release" -type d 2>/dev/null | head -1)
+    if [[ -z "$FF_PROFILE" ]]; then
+        # Fallback: launch Firefox once to create a profile, or find any profile
+        FF_PROFILE=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -name "*.default" -type d 2>/dev/null | head -1)
+    fi
+    if [[ -n "$FF_PROFILE" ]]; then
+        mkdir -p "$FF_PROFILE/chrome"
+        cp "$FF_CONFIG/chrome/userChrome.css" "$FF_PROFILE/chrome/"
+        cp "$FF_CONFIG/chrome/userContent.css" "$FF_PROFILE/chrome/"
+        cp "$FF_CONFIG/user.js" "$FF_PROFILE/"
+        ok "Firefox theme deployed to $FF_PROFILE"
+    else
+        warn "No Firefox profile found — launch Firefox once, then re-run this script"
+    fi
+else
+    warn "No Firefox config found in $FF_CONFIG, skipping"
+fi
+
 # --- Hide untracked files in dotfiles repo ---
 
 info "Configuring dotfiles repo..."
