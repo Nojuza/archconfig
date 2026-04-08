@@ -9,7 +9,7 @@ From a minimal Arch install with internet access:
 
 ```bash
 sudo pacman -S git
-curl -fsSLO https://raw.githubusercontent.com/nojuza/arch-setup/main/deploy.sh
+curl -fsSLO https://raw.githubusercontent.com/Nojuza/archconfig/main/deploy.sh
 bash deploy.sh
 ```
 
@@ -29,7 +29,7 @@ Backed-up files are preserved so you can review or restore them later.
 
 ## Daily Usage
 
-The `dotfiles` alias (loaded from `.zshrc`) replaces `git` for dotfile management:
+The `dotfiles` alias (loaded from `.bashrc`) replaces `git` for dotfile management:
 
 ```bash
 # Check what changed
