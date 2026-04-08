@@ -68,6 +68,17 @@ yay -S --needed --noconfirm --combinedupgrade "${PACKAGES[@]}"
 
 ok "All packages installed"
 
+# --- Deploy device-specific configs ---
+
+MONITOR_CONF="$HOME/.config/hypr/conf/monitor.conf"
+MONITOR_DEFAULT="$HOME/.config/hypr/conf/monitor.conf.default"
+if [[ ! -f "$MONITOR_CONF" ]] && [[ -f "$MONITOR_DEFAULT" ]]; then
+    cp "$MONITOR_DEFAULT" "$MONITOR_CONF"
+    ok "Deployed default monitor.conf — edit it for this device's displays"
+else
+    ok "monitor.conf already exists, skipping"
+fi
+
 # --- Deploy Firefox profile config ---
 # Firefox stores profiles in random-named dirs, so we find the active one
 # and copy our chrome/ and user.js into it.

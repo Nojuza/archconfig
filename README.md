@@ -8,25 +8,24 @@ Configs are tracked directly in `$HOME` — no symlinks, no copies.
 From a minimal Arch install with internet access:
 
 ```bash
-# 1. Install git
 sudo pacman -S git
-
-# 2. Clone as a bare repo
-git clone --bare https://github.com/nojuza/arch-setup.git $HOME/.dotfiles
-
-# 3. Define the alias for this session
-alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-
-# 4. Checkout files into $HOME (your configs land in place)
-dotfiles checkout
-
-# 5. If checkout fails due to existing files (e.g. default .bashrc):
-#    dotfiles checkout 2>&1 | grep -E "^\s+" | awk '{print $1}' | xargs -d '\n' rm
-#    dotfiles checkout
-
-# 6. Run the installer (packages, services, shell)
-bash ~/install.sh
+curl -fsSLO https://raw.githubusercontent.com/nojuza/arch-setup/main/deploy.sh
+bash deploy.sh
 ```
+
+`deploy.sh` handles cloning the bare repo, checking out configs, and running the
+package installer. If any local files conflict with the repo, it walks through
+each one interactively so you can choose to replace, keep, or back up.
+
+### Deploying to an existing system
+
+Same command — `deploy.sh` detects existing files and prompts per-file:
+
+- **(r)eplace** — overwrite local with repo version
+- **(k)eep** — keep your local version
+- **(b)ackup & replace** — save local to `~/.dotfiles-backup/<timestamp>/`, then overwrite
+
+Backed-up files are preserved so you can review or restore them later.
 
 ## Daily Usage
 
